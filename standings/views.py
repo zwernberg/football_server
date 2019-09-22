@@ -18,20 +18,6 @@ def sortFunc(team):
 # Create your views here.
 @api_view(['GET',])
 def standings_view(request):
-    # season = '2019'
-    # divisions = [{
-    #   'leagueId': '66903664'
-    # },
-    # {
-    #   'leagueId': '1477590'
-    # },
-    # {
-    #   'leagueId': '1507319'
-    # },
-    # {
-    #   'leagueId': '97700492'
-    # }
-    # ]
 
     season = Season.objects.get(year=settings.SEASON_ID)
     divisions = season.divisions.all()
