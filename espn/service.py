@@ -19,9 +19,9 @@ def fetchWeek(divisions):
     'view': [
       'mScoreboard',
       'mMatchupScore',
-      'mTeam'
+      'mTeam',
+      'mTopPerformers'
     ],
-    'scoringPeriodId': 3
   }
 
   for division in divisions:

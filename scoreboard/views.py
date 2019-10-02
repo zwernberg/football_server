@@ -16,5 +16,5 @@ def scoreboard_view(request, seasonId=settings.SEASON_ID):
     divisions = season.divisions.all()
     matchupPeriodId = request.GET.get('matchupPeriodId', '')
     response = service.fetchWeek(divisions)
-    # result = addOwners(response)
+    addOwners(response['data'])
     return Response(response['data'], response['status_code'])

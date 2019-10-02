@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sp&t+99u%t7v*xi8odnh604m1^y=@c23%^%!w8v^_qf7bdweb8'
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='2%`u9mP71%6RwsuD`[415[ktm<?$Ty}fvYEso>-5_5%8@|]cg{')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DJANGO_DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['schumacher.football', '127.0.0.1' ])
 
 
 # Application definition
@@ -131,7 +134,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+## static
+STATIC_URL = env('STATIC_URL', default='/django_static/')
+STATIC_ROOT = env('STATIC_ROOT', default='')
 
 
 SEASON_ID = 2019
