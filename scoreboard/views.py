@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.views.decorators.cache import cache_page
@@ -9,6 +11,7 @@ from season.models import Season, Division
 
 from scoreboard.service import addOwners
 
+@cache_page(60)
 @api_view(['GET',])
 # Create your views here.
 def scoreboard_view(request, seasonId=settings.SEASON_ID):
