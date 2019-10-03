@@ -20,7 +20,7 @@ import standings.views
 import scoreboard.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
     path('api/standings', standings.views.standings_view,),
     path('api/scoreboard', scoreboard.views.scoreboard_view,),
 ]
