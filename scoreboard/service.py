@@ -16,3 +16,16 @@ def addOwners(data):
                 break
             team['primaryOwner'] = primary_owner_name
     return data
+
+def hydrateTeams(data):
+  for division in data['divisions']:
+    for matchup in division['schedule']:
+      awayTeamId = matchup['away']['teamId']
+      homeId = matchup['home']['teamId']
+      
+      for team in division['teams']:
+        if homeId == team['id']:
+          matchup['home']['team'] = team
+        elif awayTeamId == team['id']:
+          matchup['away']['team'] = team
+      
